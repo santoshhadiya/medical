@@ -133,51 +133,53 @@ function renderMedicinesTable(medicines) {
     row.innerHTML = `
   <!-- Mobile-first cell (visible on all screens) -->
 
-  <td class="px-3 py-2 sm:hidden w-full">
-  <div class="flex items-start w-full space-x-4">
+  <td class="px-4 py-4 sm:hidden w-full border-b border-gray-200">
+  <div class="flex items-center space-x-4">
 
     <!-- Medicine Image -->
     <img src="${medicine.image || 'https://via.placeholder.com/50'}" alt="${medicine.name}"
       class="w-20 h-20 object-cover rounded-md border border-gray-300">
 
-    <!-- Medicine Details -->
-    <div class="flex-1 space-y-2">
+    <!-- Medicine Info -->
+    <div class="flex-1 space-y-3">
 
-      <!-- Name, Brand & Price -->
-      <div class="flex justify-between items-start">
-        <div>
-          <h3 class="text-base font-semibold text-gray-900 truncate">
-            ${medicine.name}
-          </h3>
-          <p class="text-sm text-blue-600">${medicine.brand}</p>
-        </div>
-        <span class="text-base font-bold text-black whitespace-nowrap">
+      <!-- Name & Price Row -->
+      <div class="flex justify-between items-center">
+        <h3 class="text-base font-semibold text-gray-900 truncate">
+          ${medicine.name}
+        </h3>
+        <span class="text-base font-bold text-gray-900 whitespace-nowrap">
           $${medicine.price.toFixed(2)}
         </span>
       </div>
 
+      <!-- Brand Row -->
+      <p class="text-sm text-gray-600">
+        ${medicine.brand}
+      </p>
+
       <!-- Type, Dosage, Stock -->
-      <div class="flex flex-wrap gap-2 text-xs">
-        <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+      <div class="flex flex-wrap gap-2 text-xs text-gray-700">
+        <span class="px-2 py-0.5 border border-gray-400 rounded-md">
           ${medicine.type}
         </span>
-        <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800">
+        <span class="px-2 py-0.5 border border-gray-400 rounded-md">
           ${medicine.dosage}
         </span>
-        <span class="px-2 py-0.5 rounded-full 
-          ${medicine.stock > 10 ? 'bg-green-100 text-green-800' : 
-          medicine.stock > 0 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
+        <span class="px-2 py-0.5 border rounded-md 
+          ${medicine.stock > 10 ? 'border-gray-400 text-gray-700' : 
+          medicine.stock > 0 ? 'border-yellow-500 text-yellow-600' : 'border-red-500 text-red-600'}">
           ${medicine.stock} ${medicine.stock === 1 ? 'unit' : 'units'}
         </span>
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex gap-2">
-        <button class="edit-btn flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium py-1 px-3 rounded-md text-sm border border-blue-200 transition-all"
+      <div class="flex gap-2 pt-2">
+        <button class="edit-btn flex-1 border border-gray-400 text-gray-700 hover:bg-gray-100 font-medium py-1.5 px-3 rounded-md text-sm transition-all"
           data-id="${medicine.id}">
           Edit
         </button>
-        <button class="delete-btn flex-1 bg-red-50 hover:bg-red-100 text-red-600 font-medium py-1 px-3 rounded-md text-sm border border-red-200 transition-all"
+        <button class="delete-btn flex-1 border border-red-500 text-red-600 hover:bg-red-50 font-medium py-1.5 px-3 rounded-md text-sm transition-all"
           data-id="${medicine.id}">
           Delete
         </button>
