@@ -1,165 +1,192 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+  remove,
+  update,
+} from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
-    import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyB3X71Knb155dt0da8kGxXX79MLr0pGIYo",
+  authDomain: "medical-app-32f35.firebaseapp.com",
+  projectId: "medical-app-32f35",
+  storageBucket: "medical-app-32f35.appspot.com",
+  messagingSenderId: "391441233756",
+  appId: "1:391441233756:web:b2f42aedb734991fa33399",
+};
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyB3X71Knb155dt0da8kGxXX79MLr0pGIYo",
-      authDomain: "medical-app-32f35.firebaseapp.com",
-      projectId: "medical-app-32f35",
-      storageBucket: "medical-app-32f35.appspot.com",
-      messagingSenderId: "391441233756",
-      appId: "1:391441233756:web:b2f42aedb734991fa33399"
-    };
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const medicinesRef = ref(db, "medicines");
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const medicinesRef = ref(db, 'medicines');
+const addMedicineBtn = document.getElementById("addMedicineBtn");
+const medicineForm = document.getElementById("medicineForm");
+const medicineFormElement = document.getElementById("medicineFormElement");
+const cancelFormBtn = document.getElementById("cancelFormBtn");
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const medicinesTableBody = document.getElementById("medicinesTableBody");
 
-    const addMedicineBtn = document.getElementById('addMedicineBtn');
-    const medicineForm = document.getElementById('medicineForm');
-    const medicineFormElement = document.getElementById('medicineFormElement');
-    const cancelFormBtn = document.getElementById('cancelFormBtn');
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    const medicinesTableBody = document.getElementById('medicinesTableBody');
+const formFields = {
+  name: document.getElementById("medicineName"),
+  brand: document.getElementById("medicineBrand"),
+  generic: document.getElementById("medicineGeneric"),
+  type: document.getElementById("medicineType"),
+  dosage: document.getElementById("medicineDosage"),
+  price: document.getElementById("medicinePrice"),
+  stock: document.getElementById("medicineStock"),
+  description: document.getElementById("medicineDescription"),
+  sideEffects: document.getElementById("medicineSideEffects"),
+  image: document.getElementById("medicineImage"),
+};
 
-    const formFields = {
-      name: document.getElementById('medicineName'),
-      brand: document.getElementById('medicineBrand'),
-      generic: document.getElementById('medicineGeneric'),
-      type: document.getElementById('medicineType'),
-      dosage: document.getElementById('medicineDosage'),
-      price: document.getElementById('medicinePrice'),
-      stock: document.getElementById('medicineStock'),
-      description: document.getElementById('medicineDescription'),
-      sideEffects: document.getElementById('medicineSideEffects'),
-      image: document.getElementById('medicineImage')
-    };
+let currentMedicineId = null;
 
-    let currentMedicineId = null;
-
-    function toggleForm(show = true, isEdit = false, medicine = null) {
-      if (show) {
-        medicineForm.classList.remove('hidden');
-        if (isEdit && medicine) {
-          currentMedicineId = medicine.id;
-          for (const [field, element] of Object.entries(formFields)) {
-            element.value = medicine[field] || '';
-          }
-          medicineForm.querySelector('h2').textContent = 'Edit Medicine';
-        } else {
-          currentMedicineId = null;
-          medicineFormElement.reset();
-          medicineForm.querySelector('h2').textContent = 'Add Medicine';
-        }
-      } else {
-        medicineForm.classList.add('hidden');
-        currentMedicineId = null;
+function toggleForm(show = true, isEdit = false, medicine = null) {
+  if (show) {
+    medicineForm.classList.remove("hidden");
+    if (isEdit && medicine) {
+      currentMedicineId = medicine.id;
+      for (const [field, element] of Object.entries(formFields)) {
+        element.value = medicine[field] || "";
       }
+      medicineForm.querySelector("h2").textContent = "Edit Medicine";
+    } else {
+      currentMedicineId = null;
+      medicineFormElement.reset();
+      medicineForm.querySelector("h2").textContent = "Add Medicine";
     }
+  } else {
+    medicineForm.classList.add("hidden");
+    currentMedicineId = null;
+  }
+}
 
-    function saveMedicine(e) {
-      e.preventDefault();
-      const medicineData = {
-        name: formFields.name.value,
-        brand: formFields.brand.value,
-        generic: formFields.generic.value,
-        type: formFields.type.value,
-        dosage: formFields.dosage.value,
-        price: parseFloat(formFields.price.value),
-        stock: parseInt(formFields.stock.value),
-        description: formFields.description.value,
-        sideEffects: formFields.sideEffects.value,
-        image: formFields.image.value,
-        createdAt: new Date().toISOString()
-      };
+function saveMedicine(e) {
+  e.preventDefault();
+  const medicineData = {
+    name: formFields.name.value,
+    brand: formFields.brand.value,
+    generic: formFields.generic.value,
+    type: formFields.type.value,
+    dosage: formFields.dosage.value,
+    price: parseFloat(formFields.price.value),
+    stock: parseInt(formFields.stock.value),
+    description: formFields.description.value,
+    sideEffects: formFields.sideEffects.value,
+    image: formFields.image.value,
+    createdAt: new Date().toISOString(),
+  };
 
-      if (currentMedicineId) {
-        update(ref(db, `medicines/${currentMedicineId}`), medicineData)
-          .then(() => {
-            alert('Medicine updated successfully!');
-            toggleForm(false);
-          })
-          .catch(error => {
-            console.error('Error updating:', error);
-            alert('Error updating medicine.');
-          });
-      } else {
-        push(medicinesRef, medicineData)
-          .then(() => {
-            alert('Medicine added successfully!');
-            toggleForm(false);
-          })
-          .catch(error => {
-            console.error('Error adding:', error);
-            alert('Error adding medicine.');
-          });
-      }
-    }
+  if (currentMedicineId) {
+    update(ref(db, `medicines/${currentMedicineId}`), medicineData)
+      .then(() => {
+        alert("Medicine updated successfully!");
+        toggleForm(false);
+      })
+      .catch((error) => {
+        console.error("Error updating:", error);
+        alert("Error updating medicine.");
+      });
+  } else {
+    push(medicinesRef, medicineData)
+      .then(() => {
+        alert("Medicine added successfully!");
+        toggleForm(false);
+      })
+      .catch((error) => {
+        console.error("Error adding:", error);
+        alert("Error adding medicine.");
+      });
+  }
+}
 
-    function deleteMedicine(medicineId) {
-      if (confirm('Are you sure to delete this medicine?')) {
-        remove(ref(db, `medicines/${medicineId}`))
-          .then(() => alert('Medicine deleted successfully!'))
-          .catch(error => {
-            console.error('Error deleting:', error);
-            alert('Error deleting medicine.');
-          });
-      }
-    }
+function deleteMedicine(medicineId) {
+  if (confirm("Are you sure to delete this medicine?")) {
+    remove(ref(db, `medicines/${medicineId}`))
+      .then(() => alert("Medicine deleted successfully!"))
+      .catch((error) => {
+        console.error("Error deleting:", error);
+        alert("Error deleting medicine.");
+      });
+  }
+}
 
-    function renderMedicinesTable(medicines) {
-      const medicinesTableBody = document.getElementById('medicinesTableBody');
-      medicinesTableBody.innerHTML = '';
+function renderMedicinesTable(medicines) {
+  const medicinesTableBody = document.getElementById("medicinesTableBody");
+  medicinesTableBody.innerHTML = "";
 
-      if (medicines.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="9" class="px-6 py-4 text-center text-gray-500">No medicines found.</td>`;
-        medicinesTableBody.appendChild(row);
-        return;
-      }
+  if (medicines.length === 0) {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="9" class="px-6 py-4 text-center text-gray-500">No medicines found.</td>`;
+    medicinesTableBody.appendChild(row);
+    return;
+  }
 
-      medicines.forEach(medicine => {
-        const row = document.createElement('tr');
-        row.className = 'hover:bg-gray-50 cursor-pointer  block sm:rounded-lg sm:shadow sm:mb-4 sm:border sm:border-gray-200 sm:w-full ';
+  medicines.forEach((medicine) => {
+    const row = document.createElement("tr");
+    row.className =
+      "hover:bg-gray-50 cursor-pointer  block sm:rounded-lg sm:shadow sm:mb-4 sm:border sm:border-gray-200 sm:w-full ";
 
-        row.innerHTML = `
+    row.innerHTML = `
   <!-- Mobile-first cell (visible on all screens) -->
 
-  <td class="px-2 py-1 sm:px-3 sm:py-1 sm:hidden  w-[500px]">
-    <div class="flex items-center w-full  ">
-      <img src="${medicine.image || 'https://via.placeholder.com/50'}" alt="${medicine.name}" 
-           class="w-20 h-30 mr-10  border-r-[1px] p-2 border-black ">
-      <div class="flex-1  min-w-0">
-        <div class=" justify-between items-start gap-2">
-          <div class="">
-            <h3 class="text-lg font-bold text-gray-900 truncate">${medicine.name}</h3>
-            <p class="text-sm font-medium text-blue-600">${medicine.brand}</p>
-          </div>
-          <span class="text-lg font-bold text-black whitespace-nowrap">$${medicine.price.toFixed(2)}</span>
+  <td class="px-3 py-2 sm:hidden w-full">
+  <div class="flex items-start w-full space-x-4">
+
+    <!-- Medicine Image -->
+    <img src="${medicine.image || 'https://via.placeholder.com/50'}" alt="${medicine.name}"
+      class="w-20 h-20 object-cover rounded-md border border-gray-300">
+
+    <!-- Medicine Details -->
+    <div class="flex-1 space-y-2">
+
+      <!-- Name, Brand & Price -->
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="text-base font-semibold text-gray-900 truncate">
+            ${medicine.name}
+          </h3>
+          <p class="text-sm text-blue-600">${medicine.brand}</p>
         </div>
-        
-        <div class="mt-1 flex flex-wrap gap-2">
-          <span class="   text-blue-800 text-xs ">${medicine.type}</span>
-          <span class="   text-purple-800 text-xs ">${medicine.dosage}</span>
-          <span class="text-xs rounded-full">
-           In Stock
-          </span>
-        </div>
-        
-        <div class="mt-2 flex gap-2">
-          <button class="edit-btn flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium py-1 px-3 rounded-md text-sm border border-blue-200 transition-all" 
-                  data-id="${medicine.id}">
-            Edit
-          </button>
-          <button class="delete-btn flex-1 bg-red-50 hover:bg-red-100 text-red-600 font-medium py-1 px-3 rounded-md text-sm border border-red-200 transition-all" 
-                  data-id="${medicine.id}">
-            Delete
-          </button>
-        </div>
+        <span class="text-base font-bold text-black whitespace-nowrap">
+          $${medicine.price.toFixed(2)}
+        </span>
       </div>
+
+      <!-- Type, Dosage, Stock -->
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+          ${medicine.type}
+        </span>
+        <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800">
+          ${medicine.dosage}
+        </span>
+        <span class="px-2 py-0.5 rounded-full 
+          ${medicine.stock > 10 ? 'bg-green-100 text-green-800' : 
+          medicine.stock > 0 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
+          ${medicine.stock} ${medicine.stock === 1 ? 'unit' : 'units'}
+        </span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-2">
+        <button class="edit-btn flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium py-1 px-3 rounded-md text-sm border border-blue-200 transition-all"
+          data-id="${medicine.id}">
+          Edit
+        </button>
+        <button class="delete-btn flex-1 bg-red-50 hover:bg-red-100 text-red-600 font-medium py-1 px-3 rounded-md text-sm border border-red-200 transition-all"
+          data-id="${medicine.id}">
+          Delete
+        </button>
+      </div>
+
     </div>
-  </td>
+  </div>
+</td>
+
 
   <!-- Desktop cells (hidden on mobile) -->
    <td class="w-full">
@@ -167,7 +194,9 @@
 
     <!-- Image + Name -->
     <div class="hidden sm:flex items-center  border-r-[1px] px-6 py-4 w-[250px]">
-      <img src="${medicine.image || 'https://via.placeholder.com/50'}" alt="${medicine.name}"
+      <img src="${medicine.image || "https://via.placeholder.com/50"}" alt="${
+      medicine.name
+    }"
         class="w-10 h-10 rounded-md object-cover border border-gray-300 mr-3">
       <span class="text-sm font-medium text-gray-900">${medicine.name}</span>
     </div>
@@ -196,15 +225,22 @@
 
     <!-- Price -->
     <div class="hidden sm:flex items-center justify-end px-4 py-4 w-[120px]">
-      <span class="text-sm font-bold text-green-600">$${medicine.price.toFixed(2)}</span>
+      <span class="text-sm font-bold text-green-600">$${medicine.price.toFixed(
+        2
+      )}</span>
     </div>
 
     <!-- Stock -->
     <div class="hidden sm:flex items-center px-4 py-4 w-[120px]">
       <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium 
-        ${medicine.stock > 10 ? 'bg-green-100 text-green-800' :
-        medicine.stock > 0 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
-        ${medicine.stock} ${medicine.stock === 1 ? 'unit' : 'units'}
+        ${
+          medicine.stock > 10
+            ? "bg-green-100 text-green-800"
+            : medicine.stock > 0
+            ? "bg-yellow-100 text-yellow-800"
+            : "bg-red-100 text-red-800"
+        }">
+        ${medicine.stock} ${medicine.stock === 1 ? "unit" : "units"}
       </span>
     </div>
 
@@ -230,80 +266,89 @@
   
   
 `; // Row click (except buttons)
-        row.addEventListener('click', (e) => {
-          if (e.target.tagName !== 'BUTTON') {
-            showMedicineDetails(medicine);
-          }
-        });
-
-        medicinesTableBody.appendChild(row);
-      });
-
-      // Event Listeners for Edit & Delete
-      document.querySelectorAll('.edit-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.stopPropagation();
-          const medicineId = e.target.dataset.id;
-          const medicine = medicines.find(m => m.id === medicineId);
-          if (medicine) toggleForm(true, true, medicine);
-        });
-      });
-
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.stopPropagation();
-          const medicineId = e.target.dataset.id;
-          deleteMedicine(medicineId);
-        });
-      });
-    }
-
-    function searchMedicines(medicines, searchTerm) {
-      if (!searchTerm) return medicines;
-      searchTerm = searchTerm.toLowerCase();
-      return medicines.filter(med =>
-        med.name.toLowerCase().includes(searchTerm) ||
-        med.brand.toLowerCase().includes(searchTerm) ||
-        med.generic.toLowerCase().includes(searchTerm)
-      );
-    }
-
-    function loadMedicines() {
-      onValue(medicinesRef, snapshot => {
-        const data = snapshot.val();
-        const medicines = data
-          ? Object.entries(data).map(([id, val]) => ({ id, ...val }))
-          : [];
-        const searchTerm = searchInput.value.trim();
-        const filteredMedicines = searchMedicines(medicines, searchTerm);
-        renderMedicinesTable(filteredMedicines);
-      });
-    }
-
-    function showMedicineDetails(medicine) {
-      document.getElementById('detailName').textContent = medicine.name;
-      document.getElementById('detailBrand').textContent = `Brand: ${medicine.brand}`;
-      document.getElementById('detailGeneric').textContent = `Generic: ${medicine.generic}`;
-      document.getElementById('detailType').textContent = medicine.type;
-      document.getElementById('detailDosage').textContent = medicine.dosage;
-      document.getElementById('detailPrice').textContent = medicine.price.toFixed(2);
-      document.getElementById('detailStock').textContent = medicine.stock;
-      document.getElementById('detailDescription').textContent = medicine.description || 'No description available';
-      document.getElementById('detailSideEffects').textContent = medicine.sideEffects || 'No side effects listed';
-      document.getElementById('detailImage').src = medicine.image || 'https://via.placeholder.com/150';
-      document.getElementById('medicineDetailBox').classList.remove('hidden');
-    }
-
-    document.getElementById('closeDetailBox').addEventListener('click', () => {
-      document.getElementById('medicineDetailBox').classList.add('hidden');
+    row.addEventListener("click", (e) => {
+      if (e.target.tagName !== "BUTTON") {
+        showMedicineDetails(medicine);
+      }
     });
 
-    // Event listeners
-    addMedicineBtn.addEventListener('click', () => toggleForm(true));
-    cancelFormBtn.addEventListener('click', () => toggleForm(false));
-    medicineFormElement.addEventListener('submit', saveMedicine);
-    searchButton.addEventListener('click', loadMedicines);
-    searchInput.addEventListener('input', loadMedicines);
+    medicinesTableBody.appendChild(row);
+  });
 
-    // Initial load
-    loadMedicines();
+  // Event Listeners for Edit & Delete
+  document.querySelectorAll(".edit-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const medicineId = e.target.dataset.id;
+      const medicine = medicines.find((m) => m.id === medicineId);
+      if (medicine) toggleForm(true, true, medicine);
+    });
+  });
+
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const medicineId = e.target.dataset.id;
+      deleteMedicine(medicineId);
+    });
+  });
+}
+
+function searchMedicines(medicines, searchTerm) {
+  if (!searchTerm) return medicines;
+  searchTerm = searchTerm.toLowerCase();
+  return medicines.filter(
+    (med) =>
+      med.name.toLowerCase().includes(searchTerm) ||
+      med.brand.toLowerCase().includes(searchTerm) ||
+      med.generic.toLowerCase().includes(searchTerm)
+  );
+}
+
+function loadMedicines() {
+  onValue(medicinesRef, (snapshot) => {
+    const data = snapshot.val();
+    const medicines = data
+      ? Object.entries(data).map(([id, val]) => ({ id, ...val }))
+      : [];
+    const searchTerm = searchInput.value.trim();
+    const filteredMedicines = searchMedicines(medicines, searchTerm);
+    renderMedicinesTable(filteredMedicines);
+  });
+}
+
+function showMedicineDetails(medicine) {
+  document.getElementById("detailName").textContent = medicine.name;
+  document.getElementById(
+    "detailBrand"
+  ).textContent = `Brand: ${medicine.brand}`;
+  document.getElementById(
+    "detailGeneric"
+  ).textContent = `Generic: ${medicine.generic}`;
+  document.getElementById("detailType").textContent = medicine.type;
+  document.getElementById("detailDosage").textContent = medicine.dosage;
+  document.getElementById("detailPrice").textContent =
+    medicine.price.toFixed(2);
+  document.getElementById("detailStock").textContent = medicine.stock;
+  document.getElementById("detailDescription").textContent =
+    medicine.description || "No description available";
+  document.getElementById("detailSideEffects").textContent =
+    medicine.sideEffects || "No side effects listed";
+  document.getElementById("detailImage").src =
+    medicine.image || "https://via.placeholder.com/150";
+  document.getElementById("medicineDetailBox").classList.remove("hidden");
+}
+
+document.getElementById("closeDetailBox").addEventListener("click", () => {
+  document.getElementById("medicineDetailBox").classList.add("hidden");
+});
+
+// Event listeners
+addMedicineBtn.addEventListener("click", () => toggleForm(true));
+cancelFormBtn.addEventListener("click", () => toggleForm(false));
+medicineFormElement.addEventListener("submit", saveMedicine);
+searchButton.addEventListener("click", loadMedicines);
+searchInput.addEventListener("input", loadMedicines);
+
+// Initial load
+loadMedicines();
