@@ -345,6 +345,10 @@ document.getElementById("closeDetailBox").addEventListener("click", () => {
   document.getElementById("medicineDetailBox").classList.add("hidden");
 });
 
+document.getElementById("closeDetailBox_2").addEventListener("click", () => {
+  document.getElementById("medicineDetailBox").classList.add("hidden");
+});
+
 // Event listeners
 addMedicineBtn.addEventListener("click", () => toggleForm(true));
 cancelFormBtn.addEventListener("click", () => toggleForm(false));
