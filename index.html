@@ -146,65 +146,77 @@
       <table id="medicinesTable" class="min-w-full divide-y divide-gray-200">
         <tbody id="medicinesTableBody" class="bg-white divide-y divide-gray-200 ">
           <!-- Rows will be added by JavaScript -->
-          
-          
+
+
         </tbody>
       </table>
     </div>
 
 
     <div id="medicineDetailBox"
-      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
-      <div class="bg-white rounded-lg shadow-xl p-4 sm:p-6 w-full max-w-2xl max-h-screen overflow-y-auto relative">
+      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+
+      <div
+        class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-2xl max-h-screen overflow-y-auto relative border border-gray-200">
+
+        <!-- Close Button -->
         <button id="closeDetailBox"
-          class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded-full text-xs sm:text-sm">
-          X
+          class="absolute top-4 right-4 text-red-600 hover:text-red-800 font-semibold text-sm">
+          ✕
         </button>
 
-        <div class="flex flex-col gap-4">
-          <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start ">
-            <div class="flex-shrink-0">
-              <img id="detailImage" src="" alt="Medicine Image"
-                class="w-24 h-24 sm:w-32 sm:h-32 object-contain rounded-lg border border-gray-200">
-            </div>
-            <div class="text-center sm:text-left">
-              <h2 id="detailName" class="text-xl sm:text-2xl font-bold text-gray-800 mb-1"></h2>
-              <p id="detailBrand" class="text-gray-600 text-sm sm:text-base"></p>
-              <p id="detailGeneric" class="text-gray-600 text-sm sm:text-base"></p>
+        <!-- Main Content -->
+        <div class="flex flex-col gap-6">
+
+          <!-- Header Section -->
+          <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+            <img id="detailImage" src="" alt="Medicine Image"
+              class="w-[200px] h-[200px] sm:w-[200px] sm:h-[200px] object-contain rounded-lg border border-gray-300">
+
+            <div class="text-center sm:text-left space-y-1">
+              <h2 id="detailName" class="text-xl font-semibold text-gray-900"></h2>
+              <p id="detailBrand" class="text-sm text-gray-600"></p>
+              <p id="detailGeneric" class="text-sm text-gray-600"></p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <p class="text-xs text-blue-600 font-medium mb-1">TYPE</p>
-              <p id="detailType" class="text-gray-800 text-sm sm:text-base"></p>
+          <!-- Info Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="border rounded-lg p-3">
+              <p class="text-xs text-gray-500 mb-1">Type</p>
+              <p id="detailType" class="text-sm text-gray-800"></p>
             </div>
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <p class="text-xs text-blue-600 font-medium mb-1">DOSAGE</p>
-              <p id="detailDosage" class="text-gray-800 text-sm sm:text-base "></p>
+            <div class="border rounded-lg p-3">
+              <p class="text-xs text-gray-500 mb-1">Dosage</p>
+              <p id="detailDosage" class="text-sm text-gray-800"></p>
             </div>
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <p class="text-xs text-blue-600 font-medium mb-1">PRICE</p>
-              <p class="text-gray-800 text-sm sm:text-base">$<span id="detailPrice"></span></p>
+            <div class="border rounded-lg p-3">
+              <p class="text-xs text-gray-500 mb-1">Price</p>
+              <p class="text-sm text-gray-800">$<span id="detailPrice"></span></p>
             </div>
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <p class="text-xs text-blue-600 font-medium mb-1">STOCK</p>
-              <p id="detailStock" class="text-gray-800 text-sm sm:text-base"></p>
+            <div class="border rounded-lg p-3">
+              <p class="text-xs text-gray-500 mb-1">Stock</p>
+              <p id="detailStock" class="text-sm text-gray-800"></p>
             </div>
           </div>
 
-          <div class="mt-2">
-            <p class="text-sm sm:text-base font-medium text-gray-700 mb-2">DESCRIPTION</p>
-            <p id="detailDescription" class="text-gray-600 text-sm sm:text-base bg-gray-50 p-3 rounded-lg"></p>
+          <!-- Description -->
+          <div>
+            <p class="text-sm font-medium text-gray-700 mb-2">Description</p>
+            <p id="detailDescription" class="text-sm text-gray-600 border rounded-lg p-3 bg-white"></p>
           </div>
 
-          <div class="mt-2">
-            <p class="text-sm sm:text-base font-medium text-gray-700 mb-2">SIDE EFFECTS</p>
-            <p id="detailSideEffects" class="text-gray-600 text-sm sm:text-base bg-gray-50 p-3 rounded-lg"></p>
+          <!-- Side Effects -->
+          <div>
+            <p class="text-sm font-medium text-gray-700 mb-2">Side Effects</p>
+            <p id="detailSideEffects" class="text-sm text-gray-600 border rounded-lg p-3 bg-white"></p>
           </div>
+
         </div>
+
       </div>
     </div>
+
   </div>
 
   <script type="module" src="script.js"></script>
