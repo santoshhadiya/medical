@@ -238,25 +238,12 @@ row.innerHTML = `
 
     <!-- Price -->
     <div class="hidden sm:flex items-center justify-end px-4 py-4 w-[120px]">
-      <span class="text-sm font-bold text-green-600">$${medicine.price.toFixed(
+      <span class="text-sm font-bold text-green-600">₹${medicine.price.toFixed(
         2
       )}</span>
     </div>
 
-    <!-- Stock -->
-    <div class="hidden sm:flex items-center px-4 py-4 w-[120px]">
-      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium 
-        ${
-          medicine.stock > 10
-            ? "bg-green-100 text-green-800"
-            : medicine.stock > 0
-            ? "bg-yellow-100 text-yellow-800"
-            : "bg-red-100 text-red-800"
-        }">
-        ${medicine.stock} ${medicine.stock === 1 ? "unit" : "units"}
-      </span>
-    </div>
-
+    
     <!-- Actions -->
     <div class="hidden sm:flex items-center justify-end px-4 py-4 w-[180px] space-x-2">
       <button

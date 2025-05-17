@@ -29,7 +29,7 @@
 
 <body class="bg-gray-100 min-h-screen">
   <!-- Header Wrapper -->
-<div class="bg-white shadow-md border-b border-gray-200">
+<div class="bg-white shadow-md border-b border-gray-200 ">
 
   <!-- Top Bar: Logo & Clinic Name -->
   <div class="flex items-center justify-center gap-3 py-3 sm:py-5">
@@ -39,12 +39,26 @@
   </div>
 
   <!-- Doctor Info & Profile -->
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 bg-gray-50 border-t border-gray-100">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 bg-gray-100 border-t border-gray-100">
     
     <!-- Doctor Details -->
     <div class="text-center sm:text-left">
       <p class="text-lg font-semibold text-gray-800">Dr. Haresh Baldaniya</p>
       <p class="text-sm text-gray-600">B.H.M.S</p>
+    </div>
+
+    <!-- Doctor Image -->
+    <div>
+      <img src="https://www.shutterstock.com/image-vector/male-doctor-smiling-happy-face-600nw-2481032615.jpg" alt="Doctor Image" class="w-20 h-20 object-cover rounded-full border border-gray-300 shadow-sm">
+    </div>
+  </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 bg-gray-50 border-t border-gray-100">
+    
+    <!-- Doctor Details -->
+    <div class="text-center sm:text-left">
+      <p class="text-lg font-semibold text-gray-800">Pratik Baldaniya</p>
+      <p class="text-sm text-gray-600">pharmacy</p>
     </div>
 
     <!-- Doctor Image -->
@@ -147,8 +161,8 @@
               <option value="Tablet">Tablet</option>
               <option value="Capsule">Capsule</option>
               <option value="Syrup">Syrup</option>
-              <option value="Injection">Injection</option>
-              <option value="Ointment">Ointment</option>
+              <option value="Injection">Tube</option>
+              <option value="Ointment">Other</option>
             </select>
           </div>
 
@@ -170,7 +184,7 @@
             <label for="medicinePrice" class="block text-sm font-medium text-gray-700">Price <span class="text-red-500">*</span></label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
-                $
+                ₹
               </div>
               <input type="number" id="medicinePrice" step="0.01" min="0" required
                 class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
@@ -180,7 +194,7 @@
 
           <!-- Stock -->
           <div class="space-y-2">
-            <label for="medicineStock" class="block text-sm font-medium text-gray-700">Stock <span class="text-red-500">*</span></label>
+            <label for="medicineStock" class="block text-sm font-medium text-gray-700">Dex Number <span class="text-red-500">*</span></label>
             <input type="number" id="medicineStock" min="0" required
               class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
               placeholder="100">
