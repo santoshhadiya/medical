@@ -28,58 +28,55 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen">
-  <!-- Header Wrapper -->
-<div class="bg-white shadow-md border-b border-gray-200 ">
+ 
+  <header class="bg-white shadow-lg border-b border-gray-200">
 
-  <!-- Top Bar: Logo & Clinic Name -->
-  <div class="flex items-center justify-center gap-3 py-3 sm:py-5">
-    <img src="https://www.clipartmax.com/png/full/33-339499_green-medical-rx-symbol-clipart-image-rx-symbol.png" alt="Medical Logo" class="w-12 p-1 sm:w-12 h-auto object-contain rounded-[50%] border border-gray-200">
-    <h1 class="text-[25px] sm:text-3xl font-bold text-red-500 ">રાધે-ક્રિષ્ના  મેડિકલ</h1>
-    <img src="https://www.clipartmax.com/png/full/33-339499_green-medical-rx-symbol-clipart-image-rx-symbol.png" alt="Medical Logo" class="w-12 p-1 sm:w-12 h-auto object-contain rounded-[50%] border border-gray-200">
-  </div>
-
-  <!-- Doctor Info & Profile -->
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 bg-gray-100 border-t border-gray-100">
-    
-    <!-- Doctor Details -->
-    <div class="text-center sm:text-left">
-      <p class="text-lg font-semibold text-gray-800">Dr. Haresh Baldaniya</p>
-      <p class="text-sm text-gray-600">B.H.M.S</p>
+    <!-- Top Bar: Logo & Clinic Name -->
+    <div class="flex items-center justify-center gap-4 py-4 sm:py-6 px-4">
+      <img src="https://www.clipartmax.com/png/full/33-339499_green-medical-rx-symbol-clipart-image-rx-symbol.png"
+        alt="Medical Logo" class="w-14 h-14 p-1 rounded-full border border-gray-300 object-contain" />
+      <h1 class="text-2xl sm:text-4xl font-bold text-red-600 tracking-wide text-center">
+        રાધે-ક્રિષ્ના મેડિકલ
+      </h1>
+      <img src="https://www.clipartmax.com/png/full/33-339499_green-medical-rx-symbol-clipart-image-rx-symbol.png"
+        alt="Medical Logo" class="w-14 h-14 p-1 rounded-full border border-gray-300 object-contain" />
     </div>
 
-    <!-- Doctor Image -->
-    <div>
-      <img src="https://www.shutterstock.com/image-vector/male-doctor-smiling-happy-face-600nw-2481032615.jpg" alt="Doctor Image" class="w-20 h-20 object-cover rounded-full border border-gray-300 shadow-sm">
-    </div>
-  </div>
+    <!-- Team Section -->
+    <section class="grid sm:grid-cols-2 gap-4 px-6 py-5 bg-gray-50 border-t border-gray-200">
 
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 bg-gray-50 border-t border-gray-100">
-    
-    <!-- Doctor Details -->
-    <div class="text-center sm:text-left">
-      <p class="text-lg font-semibold text-gray-800">Pratik Baldaniya</p>
-      <p class="text-sm text-gray-600">pharmacy</p>
-    </div>
+      <!-- Doctor Card -->
+      <div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm">
+        <img src="https://www.shutterstock.com/image-vector/male-doctor-smiling-happy-face-600nw-2481032615.jpg"
+          alt="Dr. Haresh Baldaniya" class="w-20 h-20 rounded-full border border-gray-300 object-cover" />
+        <div>
+          <p class="text-lg font-semibold text-gray-800">Dr. Haresh Baldaniya</p>
+          <p class="text-sm text-gray-600">B.H.M.S</p>
+        </div>
+      </div>
 
-    <!-- Doctor Image -->
-    <div>
-      <img src="https://www.shutterstock.com/image-vector/male-doctor-smiling-happy-face-600nw-2481032615.jpg" alt="Doctor Image" class="w-20 h-20 object-cover rounded-full border border-gray-300 shadow-sm">
-    </div>
-  </div>
+      <!-- Assistant Card -->
+      <div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm">
+        <img src="https://www.shutterstock.com/image-vector/male-doctor-smiling-happy-face-600nw-2481032615.jpg"
+          alt="Pratik Baldaniya" class="w-20 h-20 rounded-full border border-gray-300 object-cover" />
+        <div>
+          <p class="text-lg font-semibold text-gray-800">Pratik Baldaniya</p>
+          <p class="text-sm text-gray-600">Pharmacist</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Navigation Menu -->
-  <nav class="bg-white border-t border-gray-200">
-    <ul class="flex flex-wrap justify-center gap-6 text-sm sm:text-base font-medium py-3">
-      <li><a href="home.html" class="text-gray-700 hover:text-red-500">Home</a></li>
-      <li><a href="#" class="text-gray-700 hover:text-red-500">About</a></li>
-      <li><a href="#" class="text-gray-700 hover:text-red-500">Medicene</a></li>
-      <li><a href="#" class="text-gray-700 hover:text-red-500">Details</a></li>
-    </ul>
-  </nav>
+    <!-- Navigation Menu -->
+    <nav class="bg-white border-t border-gray-200">
+      <ul class="flex flex-wrap justify-center gap-6 text-sm sm:text-base font-medium py-4">
+        <li><a href="home.html" class="text-gray-700 hover:text-red-500 transition">Home</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-red-500 transition">About</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-red-500 transition">Medicine</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-red-500 transition">Details</a></li>
+      </ul>
+    </nav>
 
-</div>
-
-
+  </header>
 
   <div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
     <h1 class="text-2xl sm:text-3xl font-bold text-center text-blue-800 mb-4 sm:mb-8">Medical Inventory </h1>
@@ -100,160 +97,182 @@
       </div>
     </div>
 
-    <div id="medicineForm" class="medicine-form hidden fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity duration-300 ease-in-out overflow-y-auto">
-  <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
-    <!-- Sticky Header -->
-    <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 z-10">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-900">
-          <span id="formTitle">Add Medicine</span>
-        </h2>
-        <button id="cancelFormBtn" class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+    <div id="medicineForm"
+      class="medicine-form hidden fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity duration-300 ease-in-out overflow-y-auto">
+      <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+        <!-- Sticky Header -->
+        <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 z-10">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold text-gray-900">
+              <span id="formTitle">Add Medicine</span>
+            </h2>
+            <button id="cancelFormBtn"
+              class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Form Content -->
+        <div class="overflow-y-auto flex-1 p-6">
+          <form id="medicineFormElement" class="space-y-6">
+            <!-- Basic Information Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Name -->
+              <div class="space-y-2">
+                <label for="medicineName" class="block text-sm font-medium text-gray-700">Name <span
+                    class="text-red-500">*</span></label>
+                <div class="relative">
+                  <input type="text" id="medicineName" required
+                    class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                    placeholder="Paracetamol">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Brand -->
+              <div class="space-y-2">
+                <label for="medicineBrand" class="block text-sm font-medium text-gray-700">Brand <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="medicineBrand" required
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                  placeholder="Tylenol">
+              </div>
+
+              <!-- Generic Name -->
+              <div class="space-y-2">
+                <label for="medicineGeneric" class="block text-sm font-medium text-gray-700">Generic Name <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="medicineGeneric" required
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                  placeholder="Acetaminophen">
+              </div>
+
+              <!-- Type -->
+              <div class="space-y-2">
+                <label for="medicineType" class="block text-sm font-medium text-gray-700">Type <span
+                    class="text-red-500">*</span></label>
+                <select id="medicineType" required
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjYgOSAxMiAxNSAxOCA5Ij48L3BvbHlsaW5lPjwvc3ZnPg==')] bg-no-repeat bg-[center_right_1rem]">
+                  <option value="" disabled selected>Select Type</option>
+                  <option value="Tablet">Tablet</option>
+                  <option value="Capsule">Capsule</option>
+                  <option value="Syrup">Syrup</option>
+                  <option value="Injection">Tube</option>
+                  <option value="Ointment">Other</option>
+                </select>
+              </div>
+
+              <!-- Dosage -->
+              <div class="space-y-2">
+                <label for="medicineDosage" class="block text-sm font-medium text-gray-700">Dosage <span
+                    class="text-red-500">*</span></label>
+                <div class="relative">
+                  <input type="text" id="medicineDosage" required
+                    class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                    placeholder="500">
+                  <div
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 text-sm">
+                    mg
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price -->
+              <div class="space-y-2">
+                <label for="medicinePrice" class="block text-sm font-medium text-gray-700">Price <span
+                    class="text-red-500">*</span></label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                    ₹
+                  </div>
+                  <input type="number" id="medicinePrice" step="0.01" min="0" required
+                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                    placeholder="0.00">
+                </div>
+              </div>
+
+              <!-- Stock -->
+              <div class="space-y-2">
+                <label for="medicineStock" class="block text-sm font-medium text-gray-700">Dex Number <span
+                    class="text-red-500">*</span></label>
+                <input type="number" id="medicineStock" min="0" required
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                  placeholder="100">
+              </div>
+
+              <!-- Image URL -->
+              <div class="space-y-2 md:col-span-2">
+                <label for="medicineImage" class="block text-sm font-medium text-gray-700">Image URL <span
+                    class="text-red-500">*</span></label>
+                <div class="flex items-center space-x-2">
+                  <input type="text" id="medicineImage" required
+                    class="flex-1 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
+                    placeholder="https://example.com/medicine.jpg">
+                  <button type="button" id="previewImageBtn"
+                    class="px-3 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </button>
+                </div>
+                <div id="imagePreview" class="hidden mt-2">
+                  <img src="" alt="Preview"
+                    class="max-h-40 max-w-full object-contain rounded-lg border border-gray-200">
+                </div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="space-y-2">
+              <label for="medicineDescription" class="block text-sm font-medium text-gray-700">Description <span
+                  class="text-red-500">*</span></label>
+              <textarea id="medicineDescription" rows="4" required
+                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all min-h-[120px]"
+                placeholder="Used for treatment of fever and mild to moderate pain..."></textarea>
+            </div>
+
+            <!-- Side Effects -->
+            <div class="space-y-2">
+              <label for="medicineSideEffects" class="block text-sm font-medium text-gray-700">Side Effects <span
+                  class="text-red-500">*</span></label>
+              <textarea id="medicineSideEffects" rows="4" required
+                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all min-h-[120px]"
+                placeholder="Nausea, stomach pain, loss of appetite..."></textarea>
+            </div>
+
+            <!-- Sticky Footer -->
+            <div class="sticky bottom-0 bg-white border-t border-gray-200 -mx-6 px-6 py-4 mt-6 z-10">
+              <div class="flex flex-col-reverse sm:flex-row justify-end gap-3">
+                <button type="button" id="cancelFormBtn"
+                  class="px-6 py-3 text-gray-700 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+                  Cancel
+                </button>
+                <button type="submit"
+                  class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition-colors flex items-center justify-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                  </svg>
+                  Save Medicine
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-
-    <!-- Scrollable Form Content -->
-    <div class="overflow-y-auto flex-1 p-6">
-      <form id="medicineFormElement" class="space-y-6">
-        <!-- Basic Information Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Name -->
-          <div class="space-y-2">
-            <label for="medicineName" class="block text-sm font-medium text-gray-700">Name <span class="text-red-500">*</span></label>
-            <div class="relative">
-              <input type="text" id="medicineName" required
-                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-                placeholder="Paracetamol">
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Brand -->
-          <div class="space-y-2">
-            <label for="medicineBrand" class="block text-sm font-medium text-gray-700">Brand <span class="text-red-500">*</span></label>
-            <input type="text" id="medicineBrand" required
-              class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-              placeholder="Tylenol">
-          </div>
-
-          <!-- Generic Name -->
-          <div class="space-y-2">
-            <label for="medicineGeneric" class="block text-sm font-medium text-gray-700">Generic Name <span class="text-red-500">*</span></label>
-            <input type="text" id="medicineGeneric" required
-              class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-              placeholder="Acetaminophen">
-          </div>
-
-          <!-- Type -->
-          <div class="space-y-2">
-            <label for="medicineType" class="block text-sm font-medium text-gray-700">Type <span class="text-red-500">*</span></label>
-            <select id="medicineType" required
-              class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjYgOSAxMiAxNSAxOCA5Ij48L3BvbHlsaW5lPjwvc3ZnPg==')] bg-no-repeat bg-[center_right_1rem]">
-              <option value="" disabled selected>Select Type</option>
-              <option value="Tablet">Tablet</option>
-              <option value="Capsule">Capsule</option>
-              <option value="Syrup">Syrup</option>
-              <option value="Injection">Tube</option>
-              <option value="Ointment">Other</option>
-            </select>
-          </div>
-
-          <!-- Dosage -->
-          <div class="space-y-2">
-            <label for="medicineDosage" class="block text-sm font-medium text-gray-700">Dosage <span class="text-red-500">*</span></label>
-            <div class="relative">
-              <input type="text" id="medicineDosage" required
-                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-                placeholder="500">
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 text-sm">
-                mg
-              </div>
-            </div>
-          </div>
-
-          <!-- Price -->
-          <div class="space-y-2">
-            <label for="medicinePrice" class="block text-sm font-medium text-gray-700">Price <span class="text-red-500">*</span></label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
-                ₹
-              </div>
-              <input type="number" id="medicinePrice" step="0.01" min="0" required
-                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-                placeholder="0.00">
-            </div>
-          </div>
-
-          <!-- Stock -->
-          <div class="space-y-2">
-            <label for="medicineStock" class="block text-sm font-medium text-gray-700">Dex Number <span class="text-red-500">*</span></label>
-            <input type="number" id="medicineStock" min="0" required
-              class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-              placeholder="100">
-          </div>
-
-          <!-- Image URL -->
-          <div class="space-y-2 md:col-span-2">
-            <label for="medicineImage" class="block text-sm font-medium text-gray-700">Image URL <span class="text-red-500">*</span></label>
-            <div class="flex items-center space-x-2">
-              <input type="text" id="medicineImage" required
-                class="flex-1 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all"
-                placeholder="https://example.com/medicine.jpg">
-              <button type="button" id="previewImageBtn" class="px-3 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </button>
-            </div>
-            <div id="imagePreview" class="hidden mt-2">
-              <img src="" alt="Preview" class="max-h-40 max-w-full object-contain rounded-lg border border-gray-200">
-            </div>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div class="space-y-2">
-          <label for="medicineDescription" class="block text-sm font-medium text-gray-700">Description <span class="text-red-500">*</span></label>
-          <textarea id="medicineDescription" rows="4" required
-            class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all min-h-[120px]"
-            placeholder="Used for treatment of fever and mild to moderate pain..."></textarea>
-        </div>
-
-        <!-- Side Effects -->
-        <div class="space-y-2">
-          <label for="medicineSideEffects" class="block text-sm font-medium text-gray-700">Side Effects <span class="text-red-500">*</span></label>
-          <textarea id="medicineSideEffects" rows="4" required
-            class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 transition-all min-h-[120px]"
-            placeholder="Nausea, stomach pain, loss of appetite..."></textarea>
-        </div>
-
-        <!-- Sticky Footer -->
-        <div class="sticky bottom-0 bg-white border-t border-gray-200 -mx-6 px-6 py-4 mt-6 z-10">
-          <div class="flex flex-col-reverse sm:flex-row justify-end gap-3">
-            <button type="button" id="cancelFormBtn" class="px-6 py-3 text-gray-700 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
-              Cancel
-            </button>
-            <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition-colors flex items-center justify-center">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-              </svg>
-              Save Medicine
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 
 
@@ -268,106 +287,121 @@
     </div>
 
 
-   <!-- Modal Overlay -->
-<div id="medicineDetailBox" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+    <!-- Modal Overlay -->
+    <div id="medicineDetailBox" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
 
-  <!-- Modal Container (Scrollable on long content) -->
-  <div class="relative w-full max-w-md sm:max-w-2xl bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col max-h-[90vh]">
+      <!-- Modal Container (Scrollable on long content) -->
+      <div
+        class="relative w-full max-w-md sm:max-w-2xl bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col max-h-[90vh]">
 
-    <!-- Sticky Header Section (Image + Basic Info stays on top while scrolling) -->
-    <div class="sticky top-0 bg-white z-10 border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-      <h2 id="detailName" class="text-lg sm:text-xl font-bold text-gray-800 truncate">Medicine Name</h2>
-      <button id="closeDetailBox" class="text-gray-500 hover:text-red-600 text-2xl leading-none">
-        ✕
-      </button>
+        <!-- Sticky Header Section (Image + Basic Info stays on top while scrolling) -->
+        <div class="sticky top-0 bg-white z-10 border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+          <h2 id="detailName" class="text-lg sm:text-xl font-bold text-gray-800 truncate">Medicine Name</h2>
+          <button id="closeDetailBox" class="text-gray-500 hover:text-red-600 text-2xl leading-none">
+            ✕
+          </button>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="overflow-y-auto p-4 space-y-6">
+
+          <!-- Image + Brand/Generic Info -->
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
+            <img id="detailImage" src="" alt="Medicine Image"
+              class="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-xl border border-gray-300 shadow" />
+            <div class="text-center sm:text-left space-y-1 w-full">
+              <p id="detailBrand" class="text-sm text-gray-500"></p>
+              <p id="detailGeneric" class="text-sm text-gray-500"></p>
+            </div>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="bg-gray-50 border rounded-xl p-3 text-center">
+              <p class="text-xs text-gray-500">Type</p>
+              <p id="detailType" class="text-sm font-medium text-gray-700"></p>
+            </div>
+            <div class="bg-gray-50 border rounded-xl p-3 text-center">
+              <p class="text-xs text-gray-500">Dosage</p>
+              <p id="detailDosage" class="text-sm font-medium text-gray-700"></p>
+            </div>
+            <div class="bg-gray-50 border rounded-xl p-3 text-center">
+              <p class="text-xs text-gray-500">Price</p>
+              <p class="text-sm font-medium text-gray-700">₹<span id="detailPrice"></span></p>
+            </div>
+            <div class="bg-gray-50 border rounded-xl p-3 text-center">
+              <p class="text-xs text-gray-500">Dex Number</p>
+              <p id="detailStock" class="text-sm font-medium text-gray-700"></p>
+            </div>
+          </div>
+
+          <!-- Description Section -->
+          <div class="border rounded-xl p-4 bg-white space-y-2">
+            <p class="text-xs text-gray-500">Description</p>
+            <p id="detailDescription" class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"></p>
+          </div>
+
+          <!-- Side Effects Section -->
+          <div class="border rounded-xl p-4 bg-white space-y-2">
+            <p class="text-xs text-gray-500">Side Effects</p>
+            <p id="detailSideEffects" class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"></p>
+          </div>
+
+        </div>
+
+        <!-- Bottom Sticky Close Button -->
+        <div class="sticky bottom-0 bg-white border-t border-gray-200 p-3">
+          <button id="closeDetailBox_2"
+            class="w-full py-2 text-center text-red-600 hover:text-red-700 border border-red-400 rounded-lg font-semibold ">
+            Close
+          </button>
+        </div>
+
+      </div>
     </div>
-
-    <!-- Scrollable Content -->
-    <div class="overflow-y-auto p-4 space-y-6">
-
-      <!-- Image + Brand/Generic Info -->
-      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-        <img id="detailImage" src="" alt="Medicine Image" class="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-xl border border-gray-300 shadow" />
-        <div class="text-center sm:text-left space-y-1 w-full">
-          <p id="detailBrand" class="text-sm text-gray-500"></p>
-          <p id="detailGeneric" class="text-sm text-gray-500"></p>
-        </div>
+    <footer class="bg-gray-100 text-gray-800 text-center p-4 mt-10 rounded-lg shadow-sm">
+      <div class="space-y-1">
+        <p class="text-sm md:text-base">
+          Developed by
+          <a href="https://github.com/santoshhadiya" target="_blank"
+            class="text-blue-600 hover:underline hover:text-blue-800 font-medium">
+            @santoshhadiya
+          </a>
+        </p>
+        <p class="text-sm md:text-base text-gray-600">santoshhadiya333@gmail.com</p>
       </div>
-
-      <!-- Info Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <div class="bg-gray-50 border rounded-xl p-3 text-center">
-          <p class="text-xs text-gray-500">Type</p>
-          <p id="detailType" class="text-sm font-medium text-gray-700"></p>
-        </div>
-        <div class="bg-gray-50 border rounded-xl p-3 text-center">
-          <p class="text-xs text-gray-500">Dosage</p>
-          <p id="detailDosage" class="text-sm font-medium text-gray-700"></p>
-        </div>
-        <div class="bg-gray-50 border rounded-xl p-3 text-center">
-          <p class="text-xs text-gray-500">Price</p>
-          <p class="text-sm font-medium text-gray-700">$<span id="detailPrice"></span></p>
-        </div>
-        <div class="bg-gray-50 border rounded-xl p-3 text-center">
-          <p class="text-xs text-gray-500">Stock</p>
-          <p id="detailStock" class="text-sm font-medium text-gray-700"></p>
-        </div>
-      </div>
-
-      <!-- Description Section -->
-      <div class="border rounded-xl p-4 bg-white space-y-2">
-        <p class="text-xs text-gray-500">Description</p>
-        <p id="detailDescription" class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"></p>
-      </div>
-
-      <!-- Side Effects Section -->
-      <div class="border rounded-xl p-4 bg-white space-y-2">
-        <p class="text-xs text-gray-500">Side Effects</p>
-        <p id="detailSideEffects" class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"></p>
-      </div>
-
-    </div>
-
-    <!-- Bottom Sticky Close Button -->
-    <div class="sticky bottom-0 bg-white border-t border-gray-200 p-3">
-      <button id="closeDetailBox_2" class="w-full py-2 text-center text-red-600 hover:text-red-700 border border-red-400 rounded-lg font-semibold">
-        Close
-      </button>
-    </div>
-
-  </div>
-</div>
+    </footer>
 
 
   </div>
 
 
   <!-- JavaScript for Image Preview -->
-<script>
-  document.getElementById('previewImageBtn').addEventListener('click', function() {
-    const url = document.getElementById('medicineImage').value;
-    const preview = document.getElementById('imagePreview');
-    const img = preview.querySelector('img');
-    
-    if (url) {
-      img.src = url;
-      preview.classList.remove('hidden');
-      img.onerror = function() {
-        preview.classList.add('hidden');
-        alert('Could not load image from the provided URL');
-      };
-    } else {
-      preview.classList.add('hidden');
-    }
-  });
+  <script>
+    document.getElementById('previewImageBtn').addEventListener('click', function () {
+      const url = document.getElementById('medicineImage').value;
+      const preview = document.getElementById('imagePreview');
+      const img = preview.querySelector('img');
 
-  // Auto-scroll to top when form opens
-  document.getElementById('medicineForm').addEventListener('click', function(e) {
-    if (e.target === this) {
-      this.querySelector('.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-</script>
+      if (url) {
+        img.src = url;
+        preview.classList.remove('hidden');
+        img.onerror = function () {
+          preview.classList.add('hidden');
+          alert('Could not load image from the provided URL');
+        };
+      } else {
+        preview.classList.add('hidden');
+      }
+    });
+
+    // Auto-scroll to top when form opens
+    document.getElementById('medicineForm').addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.querySelector('.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
   <script type="module" src="script.js"></script>
 </body>
 

@@ -150,12 +150,12 @@ row.innerHTML = `
 
       <!-- Text content -->
       <div class="flex-1 min-w-0 space-y-1">
-        <div class="flex justify-between items-start gap-2">
-          <h3 class="text-lg font-bold text-gray-900 truncate pr-2">
+        <div class="justify-between items-start gap-2">
+          <p class="text-lg font-bold text-gray-900  pr-2 w-[250px] break-words">
             ${medicine.name}
-          </h3>
-          <span class="text-lg font-extrabold text-blue-600 whitespace-nowrap">
-            $${medicine.price.toFixed(2)}
+          </p>
+          <span class="text-lg font-extrabold text-green-600 whitespace-nowrap">
+              ₹${medicine.price.toFixed(2)}
           </span>
         </div>
         
