@@ -63,7 +63,6 @@ function toggleForm(show = true, isEdit = false, medicine = null) {
     currentMedicineId = null;
   }
 }
-
 function saveMedicine(e) {
   e.preventDefault();
   const medicineData = {
@@ -125,7 +124,7 @@ function renderMedicinesTable(medicines) {
     return;
   }
 
-  medicines.forEach((medicine) => {
+  medicines.forEach((medicine,i) => {
    const row = document.createElement("tr");
 row.className = "group transition-all duration-200 hover:bg-gray-50/80 w-full";
 
@@ -136,15 +135,13 @@ row.innerHTML = `
     <!-- Image and top info row -->
     <div class="flex p-4 pb-2 gap-4 items-start">
       <!-- Dynamic image container -->
+      
       <div class="relative flex-shrink-0">
         <img src="${medicine.image || 'https://via.placeholder.com/80'}" alt="${medicine.name}"
           class="w-20 h-20 rounded-lg object-cover border border-gray-200 shadow-inner">
         <!-- Stock indicator badge -->
-        <div class="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-white 
-          ${medicine.stock > 10 ? 'bg-green-100 text-green-800' : 
-           medicine.stock > 0 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'} 
-          text-xs font-bold shadow-sm">
-          ${medicine.stock}
+        <div class="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-white bg-green-100 text-green-800 text-xs font-bold shadow-sm">
+          ${medicine.stock} 
         </div>
       </div>
 
@@ -155,7 +152,9 @@ row.innerHTML = `
             ${medicine.name}
           </p>
           <span class="text-lg font-extrabold text-green-600 whitespace-nowrap">
-              ₹${medicine.price.toFixed(2)}
+              ₹${medicine.price.toFixed(2)} 
+              
+              
           </span>
         </div>
         
@@ -207,6 +206,7 @@ row.innerHTML = `
 
     <!-- Image + Name -->
     <div class="hidden sm:flex items-center  border-r-[1px] px-6 py-4 w-[250px]">
+      <h6 class="p-2 border border-gray-200 rounded-lg m-2">${i+1}</h6>
       <img src="${medicine.image || "https://via.placeholder.com/50"}" alt="${
       medicine.name
     }"
