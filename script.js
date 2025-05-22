@@ -29,6 +29,8 @@ const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const medicinesTableBody = document.getElementById("medicinesTableBody");
 
+const password="medical";
+
 const formFields = {
   name: document.getElementById("medicineName"),
   brand: document.getElementById("medicineBrand"),
@@ -103,6 +105,11 @@ function saveMedicine(e) {
 }
 
 function deleteMedicine(medicineId) {
+  if (!verifyPassword()) {
+    alert("Incorrect password. Operation cancelled.");
+    return;
+  }
+  
   if (confirm("Are you sure to delete this medicine?")) {
     remove(ref(db, `medicines/${medicineId}`))
       .then(() => alert("Medicine deleted successfully!"))
@@ -277,13 +284,17 @@ row.innerHTML = `
 
   // Event Listeners for Edit & Delete
   document.querySelectorAll(".edit-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const medicineId = e.target.dataset.id;
-      const medicine = medicines.find((m) => m.id === medicineId);
-      if (medicine) toggleForm(true, true, medicine);
-    });
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (!verifyPassword()) {
+      alert("Incorrect password. Operation cancelled.");
+      return;
+    }
+    const medicineId = e.target.dataset.id;
+    const medicine = medicines.find((m) => m.id === medicineId);
+    if (medicine) toggleForm(true, true, medicine);
   });
+});
 
   document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -356,3 +367,9 @@ searchInput.addEventListener("input", loadMedicines);
 
 // Initial load
 loadMedicines();
+
+
+function verifyPassword() {
+  const userPassword = prompt("Please enter the password to continue:");
+  return userPassword === password;
+}
